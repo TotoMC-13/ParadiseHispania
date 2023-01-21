@@ -50,3 +50,7 @@ GLOBAL_LIST_EMPTY(space_ruins_templates)
 GLOBAL_LIST_EMPTY(lava_ruins_templates)
 GLOBAL_LIST_EMPTY(shelter_templates)
 GLOBAL_LIST_EMPTY(shuttle_templates)
+
+//HISPANIA CHANGES START
+GLOBAL_LIST_EMPTY(feedmespawn)
+//HISPANIA CHANGES END

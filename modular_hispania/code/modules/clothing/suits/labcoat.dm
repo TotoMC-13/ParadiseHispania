@@ -116,3 +116,22 @@ deberan tener una linea de codigo demas para que funcionen "hispania_icon = TRUE
 	sprite_sheets = list(
         "Vox" = 'modular_hispania/icons/mob/suit.dmi',
         "Grey" = 'modular_hispania/icons/mob/suit.dmi')
+
+// Re-Sprite Code
+
+/obj/item/clothing/suit/storage/labcoat
+	icon = 'modular_hispania/icons/obj/clothing/suits/labcoats.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Kidan" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Slime People" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Machine" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Skrell" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Diona" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Nian" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Tajaran" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Vulpkanin" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Unathi" = 'modular_hispania/icons/mob/clothing/suits/labcoats.dmi',
+		"Grey" = 'modular_hispania/icons/mob/clothing/species/grey/suits/labcoats.dmi',
+		"Vox" = 'modular_hispania/icons/mob/clothing/species/vox/suits/labcoats.dmi'
+	)

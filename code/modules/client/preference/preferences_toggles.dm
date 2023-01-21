@@ -233,6 +233,7 @@
 	else
 		to_chat(src, "You will no longer hear or dance to the radiant dance machine.")
 		usr.stop_sound_channel(CHANNEL_JUKEBOX)
+		usr.stop_sound_channel(CHANNEL_RADIOBOX)
 	SSblackbox.record_feedback("tally", "toggle_verbs", 1, "Toggle Dance Machine") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/setup_character()

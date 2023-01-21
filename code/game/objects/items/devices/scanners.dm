@@ -107,6 +107,10 @@ REAGENT SCANNER
 		to_chat(user, "<span class='info'>Body temperature: ???</span>")
 		return
 
+	//HISPANIA CHANGES START
+	playsound(user.loc, 'modular_hispania/sound/medbay/healthscanner_used.ogg', 25)
+	//HISPANIA CHANGES END
+
 	user.visible_message("<span class='notice'>[user] analyzes [M]'s vitals.</span>", "<span class='notice'>You analyze [M]'s vitals.</span>")
 
 	healthscan(user, M, mode, advanced)

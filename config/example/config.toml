@@ -185,6 +185,16 @@ admin_webhook_urls = [
 	"https://admin.webhook.one",
 	"https://admin.webhook.two"
 ]
+# HISPANIA - Lista de todas las URLs para el webhook de bans
+bans_webhook_urls = [
+	"https://bans.webhook.one",
+	"https://bans.webhook.two"
+]
+# HISPANIA - Lista de todas las URLs para el webhook de notas
+notes_webhook_urls = [
+	"https://notes.webhook.one",
+	"https://notes.webhook.two"
+]
 # Role ID for the admin role on the discord. Set to "" to disable.
 # THESE MUST BOTH BE STRINGS. BYOND DOESNT LIKE NUMBERS THIS BIG
 admin_role_id = ""

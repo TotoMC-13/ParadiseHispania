@@ -18,6 +18,12 @@
 	var/list/mentor_webhook_urls = list()
 	/// List of all URLs for the mentor webhooks
 	var/list/admin_webhook_urls = list()
+	/// HISPANIA START
+	/// Lista de URLS para el webhook de bans
+	var/list/bans_webhook_urls = list()
+	/// Lista de URLS para el webhook de notas
+	var/list/notes_webhook_urls = list()
+	/// HISPANIA END
 
 
 
@@ -33,3 +39,7 @@
 	CONFIG_LOAD_LIST(main_webhook_urls, data["main_webhook_urls"])
 	CONFIG_LOAD_LIST(mentor_webhook_urls, data["mentor_webhook_urls"])
 	CONFIG_LOAD_LIST(admin_webhook_urls, data["admin_webhook_urls"])
+	/// HISPANIA START
+	CONFIG_LOAD_LIST(bans_webhook_urls, data["bans_webhook_urls"])
+	CONFIG_LOAD_LIST(notes_webhook_urls, data["notes_webhook_urls"])
+	/// HISPANIA END

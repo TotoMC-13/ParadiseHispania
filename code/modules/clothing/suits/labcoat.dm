@@ -10,10 +10,12 @@
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/applicator, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/food/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/robotanalyzer)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 50, RAD = 0, FIRE = 50, ACID = 50)
 	species_exception = list(/datum/species/golem)
-	sprite_sheets = list(
+	//HISPANIA CHANGES START
+	/*sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/suit.dmi'
-		)
+		) */
+	//HISPANIA CHANGES END
 	actions_types = list(/datum/action/item_action/button)
 	adjust_flavour = "unbutton"
 

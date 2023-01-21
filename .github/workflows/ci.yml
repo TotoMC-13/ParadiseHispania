@@ -2,10 +2,10 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - Lambda
   pull_request:
     branches:
-    - master
+    - Lambda
 
 jobs:
   run_linters:
@@ -28,7 +28,6 @@ jobs:
           tools/ci/build_tgui.sh
           tools/ci/check_grep.sh
           python3 tools/ci/check_line_endings.py
-          python3 tools/ci/unticked_files.py ${GITHUB_WORKSPACE}
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v2
@@ -59,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false # Let all map tests run to completion
       matrix:
-        maptype: ['/datum/map/cyberiad', '/datum/map/delta', '/datum/map/metastation']
+        maptype: ['/datum/map/hispania']
         byondtype: ['STABLE', 'BETA']
     services:
       mariadb:

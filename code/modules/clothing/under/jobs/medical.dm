@@ -1,13 +1,16 @@
 /obj/item/clothing/under/rank/medical
+	//HISPANIA CHANGES START
 	icon = 'icons/obj/clothing/under/medical.dmi'
+	//HISPANIA CHANGES END
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 5, RAD = 0, FIRE = 0, ACID = 0)
-
-	sprite_sheets = list(
+	//HISPANIA CHANGES START
+	/*sprite_sheets = list(
 		"Human" = 'icons/mob/clothing/under/medical.dmi',
 		"Vox" = 'icons/mob/clothing/species/vox/under/medical.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/under/medical.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/under/medical.dmi'
-		)
+		)*/
+		//HISPANIA CHANGES END
 
 /obj/item/clothing/under/rank/medical/chief_medical_officer
 	name = "chief medical officer's jumpsuit"

@@ -54,6 +54,12 @@
 	var/sound/S = sound(null, channel = channel, volume = volume)
 	S.status = SOUND_UPDATE
 	SEND_SOUND(parent, S)
+	// HISPANIA STARTS HERE
+	if (channel == CHANNEL_JUKEBOX)
+		var/sound/S2 = sound(null, channel = CHANNEL_RADIOBOX, volume = volume)
+		S2.status = SOUND_UPDATE
+		SEND_SOUND(parent, S2)
+	// HISPANIA ENDS HERE
 	// Save it
 	if(debounce_save)
 		volume_mixer_saving = addtimer(CALLBACK(src, PROC_REF(save_volume_mixer)), 3 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)

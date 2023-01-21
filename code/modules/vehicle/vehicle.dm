@@ -16,7 +16,7 @@
 	var/key_type_exact = TRUE		//can subtypes work
 	var/last_vehicle_move = 0 //used for move delays
 	var/last_move_diagonal = FALSE
-	var/vehicle_move_delay = 2 //tick delay between movements, lower = faster, higher = slower
+	var/vehicle_move_delay = 1 //tick delay between movements, lower = faster, higher = slower
 	var/auto_door_open = TRUE
 	var/needs_gravity = FALSE //To allow non-space vehicles to move in no gravity or not, mostly for adminbus
 	//Pixels

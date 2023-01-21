@@ -2002,6 +2002,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			return "AI Announcements"
 		if(CHANNEL_JUKEBOX)
 			return "Dance Machines"
+		// HISPANIA STARTS HERE
+		if(CHANNEL_RADIOBOX)
+			return "Dance Machines"
+		// HISPANIA ENDS HERE
 		if(CHANNEL_HEARTBEAT)
 			return "Heartbeat"
 		if(CHANNEL_BUZZ)

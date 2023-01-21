@@ -153,6 +153,9 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 
 /mob/living/simple_animal/hostile/mimic/copy/proc/CopyObject(obj/O, mob/living/user, destroy_original = 0)
 	if(destroy_original || CheckObject(O))
+		//HISPANIA CHANGES START
+		forma_anterior = O.type
+		//HISPANIA CHANGES END
 		O.loc = src
 		name = O.name
 		desc = O.desc

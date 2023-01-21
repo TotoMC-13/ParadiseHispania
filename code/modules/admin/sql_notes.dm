@@ -84,6 +84,7 @@
 	if(logged)
 		log_admin("[usr ? key_name(usr) : adminckey] has added a note to [target_ckey]: [notetext]")
 		message_admins("[usr ? key_name_admin(usr) : adminckey] has added a note to [target_ckey]:<br>[notetext]")
+		SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] agregó una nota al jugador [target_ckey]: \n[notetext]")
 		if(show_after)
 			show_note(target_ckey)
 
@@ -124,6 +125,7 @@
 
 	log_admin("[usr ? key_name(usr) : "Bot"] has removed a note made by [adminckey] from [ckey]: [safe_text]")
 	message_admins("[usr ? key_name_admin(usr) : "Bot"] has removed a note made by [adminckey] from [ckey]:<br>[safe_text]")
+	SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] removió una nota hecha por [adminckey] al jugador [ckey]: \n[notetext]")
 	show_note(ckey)
 
 /proc/edit_note(note_id)
@@ -169,6 +171,7 @@
 			return
 		log_admin("[usr ? key_name(usr) : "Bot"] has edited [target_ckey]'s note made by [adminckey] from \"[old_note]\" to \"[safe_text]\"")
 		message_admins("[usr ? key_name_admin(usr) : "Bot"] has edited [target_ckey]'s note made by [adminckey] from \"[old_note]\" to \"[safe_text]\"")
+		SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] editó una nota hecha por [adminckey] al jugador [target_ckey]: \n[old_note] \n\nNueva nota: \n[safe_text]")
 		show_note(target_ckey)
 		qdel(query_update_note)
 

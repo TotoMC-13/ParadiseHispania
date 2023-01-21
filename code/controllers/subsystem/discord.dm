@@ -43,6 +43,10 @@ SUBSYSTEM_DEF(discord)
 			webhook_urls = GLOB.configuration.discord.main_webhook_urls
 		if(DISCORD_WEBHOOK_MENTOR)
 			webhook_urls = GLOB.configuration.discord.mentor_webhook_urls
+		if(DISCORD_WEBHOOK_BANS)
+			webhook_urls = GLOB.configuration.discord.bans_webhook_urls
+		if(DISCORD_WEBHOOK_NOTES)
+			webhook_urls = GLOB.configuration.discord.notes_webhook_urls
 	for(var/url in webhook_urls)
 		SShttp.create_async_request(RUSTG_HTTP_METHOD_POST, url, dwp.serialize2json(), list("content-type" = "application/json"))
 

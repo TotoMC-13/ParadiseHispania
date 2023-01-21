@@ -74,7 +74,22 @@ SUBSYSTEM_DEF(ticker)
 	'sound/music/space.ogg',\
 	'sound/music/title1.ogg',\
 	'sound/music/title2.ogg',\
-	'sound/music/title3.ogg',)
+	'sound/music/title3.ogg',\
+
+	//HISPANIA CHANGES START
+	'modular_hispania/sound/music/title4.ogg',\
+	'modular_hispania/sound/music/title5.ogg',\
+	'modular_hispania/sound/music/title6.ogg',\
+	'modular_hispania/sound/music/title7.ogg',\
+	'modular_hispania/sound/music/title8.ogg',\
+	'modular_hispania/sound/music/title9.ogg',\
+	'modular_hispania/sound/music/title10.ogg',\
+	'modular_hispania/sound/music/title11.ogg',\
+	'modular_hispania/sound/music/title12.ogg',\
+	'modular_hispania/sound/music/title13.ogg',\
+	'modular_hispania/sound/music/traitor.ogg',
+	//HISPANIA CHANGES END
+	)
 
 	return ..()
 
@@ -307,7 +322,7 @@ SUBSYSTEM_DEF(ticker)
 			var/datum/holiday/holiday = SSholiday.holidays[holidayname]
 			to_chat(world, "<h4>[holiday.greet()]</h4>")
 
-	SSdiscord.send2discord_simple_noadmins("**\[Info]** Round has started")
+	SSdiscord.send2discord_simple(DISCORD_WEBHOOK_ADMIN ,"**\[Info]** Round has started")
 	auto_toggle_ooc(FALSE) // Turn it off
 	time_game_started = world.time
 

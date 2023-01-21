@@ -43,3 +43,11 @@
 	icon = (hispania_icon ? 'modular_hispania/icons/obj/clothing/uniforms.dmi' : icon)
 	lefthand_file = (hispania_icon ? 'modular_hispania/icons/mob/inhands/clothing_lefthand.dmi' : lefthand_file)
 	righthand_file = (hispania_icon ? 'modular_hispania/icons/mob/inhands/clothing_righthand.dmi' : righthand_file)
+
+/obj/item/clothing
+	drop_sound = 'modular_hispania/sound/items/hat_drop.ogg'
+	pickup_sound = 'modular_hispania/sound/items/hat_pickup.ogg'
+
+/obj/item/clothing/glasses/
+	drop_sound = 'modular_hispania/sound/items/glasses.ogg'
+	pickup_sound = 'modular_hispania/sound/items/accesory_pickup.ogg'

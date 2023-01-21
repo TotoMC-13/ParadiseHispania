@@ -1440,6 +1440,11 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 		if(!panel_open)
 			panel_open = TRUE
 		wires.cut_all()
+		//HISPANIA CHANGES START
+		var/datum/effect_system/smoke_spread/smoke = new
+		smoke.set_up(4, 0, loc)
+		smoke.start()
+		//HISPANIA CHANGES END
 		update_icon()
 
 /obj/machinery/door/airlock/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)

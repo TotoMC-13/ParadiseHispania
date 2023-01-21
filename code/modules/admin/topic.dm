@@ -746,6 +746,8 @@
 							msg += ", [job]"
 					add_note(M.ckey, "Banned  from [msg] - [reason]", null, usr.ckey, 0)
 					message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes</span>", 1)
+					SSdiscord.send2discord_simple(DISCORD_WEBHOOK_BANS, "[usr.ckey] jobbaneó a [key_name_admin(M)] de [msg]: \n\n[reason] \n\nEste jobban será removido en [mins] minutos")
+					SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] jobbaneó a [key_name_admin(M)] de [msg]: \n\n[reason] \n\nEste jobban será removido en [mins] minutos")
 
 					// Reload their job ban holder (refresh this round)
 					if(M.client)
@@ -769,6 +771,8 @@
 								msg += ", [job]"
 						add_note(M.ckey, "Banned  from [msg] - [reason]", null, usr.ckey, 0)
 						message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</span>", 1)
+						SSdiscord.send2discord_simple(DISCORD_WEBHOOK_BANS, "[usr.ckey] jobbaneó a [key_name_admin(M)] de [msg]: \n\n[reason] \n\nEste jobban no será removido automáticamente y debe ser apelado de ser posible.")
+						SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] jobbaneó a [key_name_admin(M)] de [msg]: \n\n[reason] \n\nEste jobban no será removido automácode/modules/admin/db_ban/functions.dmticamente y debe ser apelado de ser posible.")
 
 						// Reload their job ban holder (refresh this round)
 						if(M.client)
@@ -892,6 +896,8 @@
 					to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
 				log_admin("[key_name(usr)] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 				message_admins("<span class='notice'>[key_name_admin(usr)] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</span>")
+				SSdiscord.send2discord_simple(DISCORD_WEBHOOK_BANS, "[usr.ckey] baneó a [M.ckey] por: \n\n[reason] \n\nEste ban será removido en [mins] minutos")
+				SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] baneó a [M.ckey] por: \n\n[reason] \n\nEste ban será removido en [mins] minutos")
 
 				qdel(M.client)
 			if("No")
@@ -908,6 +914,8 @@
 					to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
 				log_admin("[key_name(usr)] has banned [M.ckey].\nReason: [reason]\nThis ban does not expire automatically and must be appealed.")
 				message_admins("<span class='notice'>[key_name_admin(usr)] has banned [M.ckey].\nReason: [reason]\nThis ban does not expire automatically and must be appealed.</span>")
+				SSdiscord.send2discord_simple(DISCORD_WEBHOOK_BANS, "[usr.ckey] baneó a [M.ckey] por: \n\n[reason] \n\nEste ban no es temporal y debe ser apelado de ser posible.")
+				SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] baneó a [M.ckey] por: \n\n[reason] \n\nEste ban no es temporal y debe ser apelado de ser posible.")
 				DB_ban_record(BANTYPE_PERMA, M, -1, reason)
 				add_note(M.ckey, "Permanently banned - [reason]", null, usr.ckey, FALSE)
 

@@ -47,7 +47,11 @@ GLOBAL_LIST_INIT(drinks, list("beer2","hot_coco","orangejuice","tomatojuice","li
 					"silencer","changelingsting","irishcarbomb","syndicatebomb","erikasurprise","driestmartini", "flamingmoe",
 					"arnold_palmer","gimlet","sidecar","whiskeysour","mintjulep","pinacolada","sontse","ahdomaieclipse",
 					"beachfeast","fyrsskartears","junglevox","slimemold","dieseife","aciddreams","islaywhiskey","ultramatter",
-					"howler", "dionasmash"))
+					"howler", "dionasmash",
+					//HISPANIA CHANGES START
+					"agave","anonna","kiwi","mango","mate","nispero","peach","castor_oil","strawberry"
+					//HISPANIA CHANGES END
+					))
 
 //Liver Toxins list
 GLOBAL_LIST_INIT(liver_toxins, list("toxin", "plasma", "sacid", "facid", "cyanide","amanitin", "carpotoxin"))

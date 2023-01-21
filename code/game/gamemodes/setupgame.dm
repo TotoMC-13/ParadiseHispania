@@ -92,6 +92,7 @@
 	GLOB.immolateblock  = getAssignedBlock("IMMOLATE",   numsToAssign)
 	GLOB.empathblock    = getAssignedBlock("EMPATH",     numsToAssign, DNA_HARD_BOUNDS, good=1)
 	GLOB.polymorphblock = getAssignedBlock("POLYMORPH",  numsToAssign, DNA_HARDER_BOUNDS, good=1)
+	GLOB.superfartblock = getAssignedBlock("SUPERFART",  numsToAssign, DNA_HARDER_BOUNDS, good=1)// HISPANIA CHANGES START & END
 
 	//
 	// /vg/ Blocks

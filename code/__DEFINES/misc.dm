@@ -510,6 +510,12 @@
 /// Send to the mentor Discord webhook
 #define DISCORD_WEBHOOK_MENTOR "MENTOR"
 
+/// Send to the bans Discord webhook
+#define DISCORD_WEBHOOK_BANS "BANS"
+
+/// Send to the notes Discord webhook
+#define DISCORD_WEBHOOK_NOTES "NOTES"
+
 // Hallucination severities
 #define HALLUCINATE_MINOR 1
 #define HALLUCINATE_MODERATE 2

@@ -173,6 +173,14 @@ GLOBAL_LIST_EMPTY(ts_infected_list)
 	..()
 
 /mob/living/simple_animal/hostile/poison/terror_spider/AttackingTarget()
+	//HISPANIA CHANGES START
+	if(isIn_types(target, hispa_no_attack))
+		to_chat(src, "<span class='warning'>Destruir esto no me resulta de utilidad</span>")
+		return
+	if(ishuman(target) && isturf(loc) && istype(loc.loc, /area/shuttle/arrival/station))
+		to_chat(src, "No deberia atacar tripulantes recien llegados")
+		return
+	//HISPANIA CHANGES END
 	if(isterrorspider(target))
 		if(target in enemies)
 			enemies -= target

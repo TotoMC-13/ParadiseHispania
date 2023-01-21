@@ -1,4 +1,4 @@
-#define MAX_ADMIN_BANS_PER_ADMIN 1
+	#define MAX_ADMIN_BANS_PER_ADMIN 1
 
 /datum/admins/proc/DB_ban_record(bantype, mob/banned_mob, duration = -1, reason, job = "", rounds = 0, banckey = null, banip = null, bancid = null)
 
@@ -427,6 +427,7 @@
 
 	message_admins("[key_name_admin(usr)] has lifted [pckey]'s ban.")
 	log_admin("[key_name(usr)] has lifted [pckey]'s ban.")
+	SSdiscord.send2discord_simple(DISCORD_WEBHOOK_NOTES, "[usr.ckey] removió el ban de [pckey]")
 	flag_account_for_forum_sync(pckey)
 	// See if they are online
 	var/client/C = GLOB.directory[ckey(pckey)]

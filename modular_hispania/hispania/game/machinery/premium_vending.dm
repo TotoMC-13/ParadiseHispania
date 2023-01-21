@@ -1,0 +1,151 @@
+/obj/machinery/economy/vending/premium_vending
+	name = "Premium Hispania"
+	desc = "Accessories dispenser. Made by NT Corp."
+	ads_list = ("Un precio alto para articulos de alta calidad")
+	icon = 'modular_hispania/icons/obj/vending.dmi'
+	icon_state = "premium"
+	icon_vend = "premium-vend"
+	density = TRUE
+	vend_delay = 12
+
+	products = list(
+					/obj/item/storage/toolbox/fluff/lunchbox = 1,
+					/obj/item/lighter/zippo/fluff/purple = 1,
+					/obj/item/bedsheet/fluff/hugosheet = 1,
+					/obj/item/clothing/head/fluff/heather_winceworth = 1,
+					/obj/item/storage/backpack/fluff/ssscratches_back = 1,
+					/obj/item/lighter/zippo/fluff/duckchan = 1,
+					/obj/item/lighter/zippo/fluff/warriorstar = 1,
+					/obj/item/fluff/wingler_comb = 1,
+					/obj/item/lighter/zippo/fluff/michael_guess_1 = 1,
+					/obj/item/storage/backpack/fluff/krich_back = 1,
+					/obj/item/clothing/suit/fluff/vetcoat = 1 ,
+					/obj/item/clothing/suit/fluff/vetcoat/red = 1,
+					/obj/item/clothing/suit/fluff/vetcoat/navy = 1,
+					/obj/item/clothing/under/fluff/kikeridress = 1,
+					/obj/item/clothing/mask/gas/fluff/kikerimask = 1,
+					/obj/item/clothing/mask/gas/fluff/yahiyamask = 1,
+					/obj/item/storage/backpack/fluff/thebrew = 1,
+					/obj/item/clothing/accessory/rbscarf = 1,
+					/obj/item/clothing/head/beret/fluff/elo = 1,
+					/obj/item/fluff/pinapplehairgel = 1,
+					/obj/item/fluff/mongosflash = 1,
+					/obj/item/fluff/zekemirror = 1,
+					/obj/item/crowbar/fluff/zelda_creedy_1 = 1,
+					/obj/item/clothing/glasses/sunglasses_fake/fluff/kaki = 1,
+					/obj/item/clothing/accessory/medal/fluff/XannZxiax = 1,
+					/obj/item/clothing/under/fluff/kiaoutfit = 1,
+					/obj/item/clothing/head/fluff/kiahat = 1,
+					/obj/item/clothing/head/beret/fluff/linda = 1,
+					/obj/item/clothing/head/fluff/kaki = 1,
+					/obj/item/clothing/mask/gas/fluff/kiamask = 1,
+					/obj/item/clothing/suit/storage/labcoat/fluff/pulsecoat = 1,
+					/obj/item/clothing/accessory/necklace/locket/fluff/fethasnecklace = 1,
+					/obj/item/fluff/rsik_katana = 1,
+					/obj/item/clothing/head/wizard/fake/fluff/dreamy = 1,
+					/obj/item/clothing/head/valkyriehelmet = 1,
+					/obj/item/storage/backpack/fluff/syndiesatchel = 1,
+					/obj/item/clothing/head/fluff/pinesalad_horns = 1,
+					/obj/item/clothing/suit/fluff/supplymaster_jacket = 1,
+					/obj/item/clothing/head/bearpelt/fluff/polar = 1,
+					/obj/item/clothing/glasses/monocle/fluff/trubus = 1,
+					/obj/item/clothing/glasses/meson/fluff/book_berner_1 = 1,
+					/obj/item/clothing/head/helmet/space/plasmaman/lf53_fluff = 1,
+					/obj/item/fluff/lighty_plasman_modkit = 1,
+					/obj/item/storage/backpack/fluff/hiking = 1,
+					/obj/item/clothing/suit/fluff/kluys = 1,
+					/obj/item/fluff/fei_gasmask_kit = 1,
+					/obj/item/fluff/desolate_baton_kit = 1,
+					/obj/item/clothing/gloves/ring/fluff/benjaminfallout = 1,
+					/obj/item/fluff/pyro_wintersec_kit = 1,
+					/obj/item/fluff/tattoo_gun/elliot_cybernetic_tat = 1,
+					/obj/item/fluff/sylus_conversion_kit = 1,
+					/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud = 1,
+					/obj/item/clothing/glasses/hud/security/sunglasses/fluff/eyepro = 1,
+					/obj/item/fluff/dogwhistle = 1,
+					/obj/item/clothing/head/helmet/fluff/merchant_sallet = 1,
+					/obj/item/clothing/suit/jacket/miljacket/patch = 1,
+					/obj/item/clothing/suit/storage/fluff/k3_webbing = 1,
+					/obj/item/fluff/bird_painter = 1,
+					/obj/item/bikehorn/fluff/pinkbikehorn = 1,
+					/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud = 1,
+					/obj/item/clothing/glasses/hud/security/sunglasses/fluff/eyepro = 1,
+					/obj/item/fluff/dogwhistle = 1,
+					/obj/item/clothing/head/helmet/fluff/merchant_sallet = 1,
+					/obj/item/fluff/rapid_wheelchair_kit = 1)
+
+	prices = list(
+					/obj/item/storage/toolbox/fluff/lunchbox = 500,
+					/obj/item/lighter/zippo/fluff/purple = 1000,
+					/obj/item/bedsheet/fluff/hugosheet = 1000,
+					/obj/item/clothing/head/fluff/heather_winceworth = 1000,
+					/obj/item/storage/backpack/fluff/ssscratches_back = 1000,
+					/obj/item/lighter/zippo/fluff/duckchan = 1250,
+					/obj/item/lighter/zippo/fluff/warriorstar = 1250,
+					/obj/item/fluff/wingler_comb = 1250,
+					/obj/item/storage/backpack/fluff/krich_back = 1500,
+					/obj/item/lighter/zippo/fluff/michael_guess_1 = 1500,
+					/obj/item/clothing/suit/fluff/vetcoat = 1500,
+					/obj/item/clothing/suit/fluff/vetcoat/red = 1500,
+					/obj/item/clothing/suit/fluff/vetcoat/navy = 1500,
+					/obj/item/clothing/under/fluff/kikeridress = 1500,
+					/obj/item/clothing/mask/gas/fluff/kikerimask = 1500,
+					/obj/item/clothing/mask/gas/fluff/yahiyamask = 1500,
+					/obj/item/storage/backpack/fluff/thebrew = 1500,
+					/obj/item/clothing/accessory/rbscarf = 2000,
+					/obj/item/clothing/head/beret/fluff/elo = 2000,
+					/obj/item/fluff/pinapplehairgel = 2000,
+					/obj/item/fluff/mongosflash = 3000,
+					/obj/item/fluff/zekemirror = 3000,
+					/obj/item/crowbar/fluff/zelda_creedy_1 = 3000,
+					/obj/item/clothing/glasses/sunglasses_fake/fluff/kaki = 3000,
+					/obj/item/clothing/head/fluff/kaki = 3000,
+					/obj/item/clothing/accessory/medal/fluff/XannZxiax = 3000,
+					/obj/item/clothing/under/fluff/kiaoutfit = 3000,
+					/obj/item/clothing/head/fluff/kiahat = 3000,
+					/obj/item/clothing/head/beret/fluff/linda = 3000,
+					/obj/item/clothing/mask/gas/fluff/kiamask = 3000,
+					/obj/item/clothing/suit/storage/labcoat/fluff/pulsecoat = 3000,
+					/obj/item/clothing/accessory/necklace/locket/fluff/fethasnecklace = 3000,
+					/obj/item/fluff/rsik_katana = 5000,
+					/obj/item/clothing/head/wizard/fake/fluff/dreamy = 5000,
+					/obj/item/clothing/head/valkyriehelmet = 5000,
+					/obj/item/storage/backpack/fluff/syndiesatchel = 5000,
+					/obj/item/clothing/head/fluff/pinesalad_horns = 5000,
+					/obj/item/clothing/suit/fluff/supplymaster_jacket = 5000,
+					/obj/item/clothing/head/bearpelt/fluff/polar = 5000,
+					/obj/item/clothing/glasses/monocle/fluff/trubus = 5000,
+					/obj/item/clothing/glasses/meson/fluff/book_berner_1 = 5000,
+					/obj/item/clothing/head/helmet/space/plasmaman/lf53_fluff = 5000,
+					/obj/item/fluff/lighty_plasman_modkit = 5000,
+					/obj/item/storage/backpack/fluff/hiking = 7500,
+					/obj/item/clothing/suit/fluff/kluys = 7500,
+					/obj/item/fluff/fei_gasmask_kit = 7500,
+					/obj/item/fluff/desolate_baton_kit = 9000,
+					/obj/item/clothing/gloves/ring/fluff/benjaminfallout = 9000,
+					/obj/item/fluff/pyro_wintersec_kit = 12000,
+					/obj/item/fluff/tattoo_gun/elliot_cybernetic_tat = 12500,
+					/obj/item/fluff/sylus_conversion_kit = 15000,
+					/obj/item/clothing/suit/jacket/miljacket/patch = 15000,
+					/obj/item/clothing/suit/storage/fluff/k3_webbing = 15000,
+					/obj/item/fluff/bird_painter = 20000,
+					/obj/item/bikehorn/fluff/pinkbikehorn = 20000,
+					/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud = 20000,
+					/obj/item/clothing/glasses/hud/security/sunglasses/fluff/eyepro = 20000,
+					/obj/item/fluff/dogwhistle = 22000,
+					/obj/item/clothing/head/helmet/fluff/merchant_sallet = 22000,
+					/obj/item/fluff/rapid_wheelchair_kit = 25000)
+
+//no queremos ladrones ni articulos gratis
+
+/obj/machinery/economy/vending/premium_vending/obj_break(damage_flag)
+	if(stat & BROKEN)
+		return
+	stat |= BROKEN
+	set_light(0)
+	update_icon(UPDATE_OVERLAYS)
+	return
+
+/obj/machinery/economy/vending/premium_vending/throw_item()
+	return
+

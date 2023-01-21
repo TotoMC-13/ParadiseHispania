@@ -47,3 +47,34 @@ deberan tener una linea de codigo demas para que funcionen "hispania_icon = TRUE
 	item_color = "brig_phys"
 	permeability_coefficient = 0.50
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0, fire = 30, acid = 30)
+
+//Re-Sprites Code//
+
+/obj/item/clothing/under/rank/security
+	icon = 'modular_hispania/icons/obj/clothing/under/security.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_hispania/icons/mob/clothing/under/security.dmi',
+		"Vox" = 'modular_hispania/icons/mob/clothing/species/vox/under/security.dmi',
+		"Grey" = 'modular_hispania/icons/mob/clothing/species/grey/under/security.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/under/security.dmi'
+	)
+
+/obj/item/clothing/under/rank/security/officer
+	sprite_sheets = list(
+		"Human" = 'modular_hispania/icons/mob/clothing/under/security.dmi',
+		"Vox" = 'modular_hispania/icons/mob/clothing/species/vox/under/security.dmi',
+		"Grey" = 'modular_hispania/icons/mob/clothing/species/grey/under/security.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/under/security.dmi'
+	)
+
+/obj/item/clothing/under/rank/security/detective/fem
+	name = "detective skirt"
+	desc = "a comfortable skirt made for detectives"
+	icon_state = "detf"
+	item_color = "detf"
+
+/obj/item/clothing/under/rank/security/detective/black
+	name = "forensics technician jumpsuit"
+	desc = "a forensics technician jumpsuit used in crime scenes"
+	icon_state = "detblack"
+	item_color = "detblack"

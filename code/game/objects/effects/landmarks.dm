@@ -597,7 +597,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/awaystart) //Without this away mission
 	icon = 'icons/effects/spawner_icons.dmi'
 
 /obj/effect/landmark/mob_spawner/Initialize(mapload)
-	. = ..() 
+	. = ..()
 	new mobtype(loc)
 	return INITIALIZE_HINT_QDEL
 
@@ -658,3 +658,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/awaystart) //Without this away mission
 
 /obj/effect/landmark/free_golem_spawn
 	name = "Free Golem Spawn Point"
+
+//HISPANIA CHANGES START
+/obj/effect/landmark/spawner/feedmespawn
+	name = "feed me spawn"
+
+/obj/effect/landmark/spawner/feedmespawn/Initialize(mapload)
+	spawner_list = GLOB.feedmespawn
+	return ..()
+//HISPANIA CHANGES END

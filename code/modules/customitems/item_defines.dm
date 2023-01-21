@@ -178,7 +178,7 @@
 /obj/item/clothing/glasses/sunglasses_fake/fluff/kaki //Rapidvalj: Kakicharakiti
 	name = "broken thermonocle"
 	desc = "A weathered Vox thermonocle, doesn't seem to work anymore."
-	icon_state = "thermoncle"
+	icon_state = "thermonocle"
 
 /obj/item/fluff/rapid_wheelchair_kit //Rapidvalj: Hakikarahiti
 	name = "wheelchair conversion kit"

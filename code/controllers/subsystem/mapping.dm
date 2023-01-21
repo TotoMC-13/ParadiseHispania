@@ -25,10 +25,10 @@ SUBSYSTEM_DEF(mapping)
 			map_datum = text2path(lines[1])
 			map_datum = new map_datum
 		catch
-			map_datum = new /datum/map/cyberiad // Assume cyberiad if non-existent
+			map_datum = new /datum/map/hispania //VAMOOOOOOOS HISPANITA // Assume cyberiad if non-existent
 		fdel("data/next_map.txt") // Remove to avoid the same map existing forever
 	else
-		map_datum = new /datum/map/cyberiad // Assume cyberiad if non-existent
+		map_datum = new /datum/map/hispania // Assume cyberiad if non-existent
 
 /datum/controller/subsystem/mapping/Shutdown()
 	if(next_map) // Save map for next round
@@ -172,7 +172,7 @@ SUBSYSTEM_DEF(mapping)
 	var/watch = start_watch()
 	log_startup_progress("Loading Lavaland...")
 	var/lavaland_z_level = GLOB.space_manager.add_new_zlevel(MINING, linkage = SELFLOOPING, traits = list(ORE_LEVEL, REACHABLE, STATION_CONTACT, HAS_WEATHER, AI_OK))
-	GLOB.maploader.load_map(file("_maps/map_files/generic/Lavaland.dmm"), z_offset = lavaland_z_level)
+	GLOB.maploader.load_map(file("_maps/maphispania_files/generic/Lavaland.dmm"), z_offset = lavaland_z_level) // HISPANIA
 	log_startup_progress("Loaded Lavaland in [stop_watch(watch)]s")
 
 /datum/controller/subsystem/mapping/proc/seedRuins(list/z_levels = null, budget = 0, whitelist = /area/space, list/potentialRuins)

@@ -9,7 +9,7 @@
 	light_color = "#FFD100"
 	max_integrity = 75
 	interact_offline = 1
-	integrity_failure = 80
+	integrity_failure = 60
 	var/light_range_on = 3
 	var/light_power_on = 1
 	var/active = FALSE
@@ -46,7 +46,8 @@
 		)
 	var/datum/track/selection
 	var/track = ""
-	var/musicrange = 10
+	var/musicrange = 11
+	var/MusicChannel = CHANNEL_JUKEBOX
 
 /datum/track
 	song_name = "???"
@@ -76,34 +77,47 @@
 	..()
 	light()
 
+/obj/machinery/hispaniabox/welder_act(mob/user, obj/item/I)
+	if(user.a_intent == INTENT_HARM) // Harm intent
+		return FALSE
+	else // Any other intents
+		if(obj_integrity >= max_integrity)
+			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
+			return TRUE
+		if(!I.tool_use_check(user, 0))
+			return TRUE
+		WELDER_ATTEMPT_REPAIR_MESSAGE
+		if(I.use_tool(src, user, 40, volume = I.tool_volume))
+			WELDER_REPAIR_SUCCESS_MESSAGE
+			obj_integrity = clamp(obj_integrity + 20, 0, max_integrity)
+			if(obj_integrity > integrity_failure)
+				stat &= ~BROKEN
+			update_icon()
+		return TRUE
+
 /obj/machinery/hispaniabox/emp_act()
 	. = ..()
 	dance_over()
 	stop = 0
 	active = FALSE
 	selection = null
-	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	playsound(src.loc, 'sound/effects/sparks4.ogg', 50, TRUE)
 	do_sparks(3, 1, src)
-	if(obj_integrity < 90)
-		obj_integrity = 1
-		do_sparks(3, 1, src)
-		update_icon()
-		return
-	obj_integrity -= 90 // OUCH daño a la jukebox, 2 EMP TUMBAN LA JUKEBOX
+	obj_integrity -= max_integrity - 1 // OUCH daño a la jukebox, 2 EMP TUMBAN LA JUKEBOX
 	update_icon()
 
 /obj/machinery/hispaniabox/Destroy()
 	dance_over()
 	selection = null
-	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	return ..()
 
 /obj/machinery/hispaniabox/obj_break(damage_flag)
 	..()
 	dance_over()
 	selection = null
-	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	update_icon()
 
 /obj/machinery/hispaniabox/attackby(obj/item/O, mob/user, params)
@@ -153,12 +167,6 @@
 		var/image = image('modular_hispania/icons/obj/hispaniabox.dmi', icon_state = selection.song_icon)
 		. += "<span class='notice'>[bicon(src)] Estas escuchando \"[selection.song_name]\" [bicon(image)]</span>"
 
-/obj/machinery/hispaniabox/proc/double_jukebox()
-	for(var/obj/machinery/hispaniabox/B in range(musicrange*2,src))
-		if (B != src && B.active)
-			return TRUE
-	return FALSE
-
 /obj/machinery/hispaniabox/attack_hand(mob/user)
 	if(..())
 		return
@@ -190,9 +198,6 @@
 	if(!choice || !radial_check(user))
 		return
 	if (choice == "Play/Pause")
-		if(double_jukebox())
-			to_chat(user,"<span class='warning'>[bicon(src)] Can you have some manners? There's already music playing.</span>")
-			return
 		if(isnull(selection))
 			return
 		if(QDELETED(src))
@@ -206,6 +211,30 @@
 			update_icon()
 			dance_setup()
 			playsound(src,'modular_hispania/sound/machines/dvd_working.ogg',50,1)
+
+			var/sound/song_played = sound(selection["song_path"])
+			var/list/players_copy = GLOB.player_list.Copy()
+
+			for(var/mob/M in range(musicrange,src))
+				if(!M.client || !(M.client.prefs.sound & SOUND_INSTRUMENTS))
+					continue
+				rangers[M] = TRUE
+				M.playsound_local(src, 100, channel = MusicChannel, S = song_played)
+				var/dis = get_dist(src, M)
+				if(dis >= musicrange-1)
+					M.set_sound_channel_volume(MusicChannel, 5 * M.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+				else if(dis >= musicrange-2)
+					M.set_sound_channel_volume(MusicChannel, 15 * M.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+				else if(dis >= musicrange-4)
+					M.set_sound_channel_volume(MusicChannel, 40 * M.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+				else
+					M.set_sound_channel_volume(MusicChannel, 100 * M.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+			for(var/mob/M in players_copy)
+				if(!M.client || !(M.client.prefs.sound & SOUND_INSTRUMENTS) || (M in rangers))
+					continue
+				rangers[M] = TRUE
+				M.playsound_local(src, 100, channel = MusicChannel, S = song_played)
+				M.set_sound_channel_volume(MusicChannel, 0)
 			START_PROCESSING(SSobj, src)
 			return
 		else if(active)
@@ -241,36 +270,43 @@
 	for(var/mob/living/L in rangers)
 		if(!L || !L.client)
 			continue
-		L.stop_sound_channel(CHANNEL_JUKEBOX)
+		L.stop_sound_channel(MusicChannel)
 	rangers = list()
 
 /obj/machinery/hispaniabox/process()
 	if(world.time < stop && active)
-		var/sound/song_played = sound(selection["song_path"])
+		//var/sound/song_played = sound(selection["song_path"])
 
 		for(var/mob/M in range(musicrange,src))
 			if(!(M in rangers))
-				rangers[M] = TRUE
-
 				if(!M.client || !(M.client.prefs.sound & SOUND_INSTRUMENTS))
 					continue
-				M.playsound_local(src, null, 100, channel = CHANNEL_JUKEBOX, S = song_played)
+				rangers[M] = TRUE
+				M.set_sound_channel_volume(MusicChannel, M.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
 		for(var/mob/L in rangers)
-			if(get_dist(src, L) > musicrange)
+			var/dis = get_dist(src, L)
+			if(dis > musicrange)
 				rangers -= L
 				if(!L || !L.client)
 					continue
-				L.stop_sound_channel(CHANNEL_JUKEBOX)
-
+				L.set_sound_channel_volume(MusicChannel, 0)
+			else if(dis >= musicrange-1)
+				L.set_sound_channel_volume(MusicChannel, 5 * L.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+			else if(dis >= musicrange-2)
+				L.set_sound_channel_volume(MusicChannel, 15 * L.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+			else if(dis >= musicrange-4)
+				L.set_sound_channel_volume(MusicChannel, 40 * L.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
+			else
+				L.set_sound_channel_volume(MusicChannel, 100 *L.client.prefs.get_channel_volume(CHANNEL_JUKEBOX))
 	else if(active)
 		active = FALSE
-		STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSfastprocess, src)
 		dance_over()
 		playsound(src,'sound/machines/terminal_off.ogg',50,1)
 		icon_state = "[initial(icon_state)]"
 		stop = world.time + 10
 
-/obj/machinery/hispaniabox/update_icon()
+/obj/machinery/hispaniabox/update_icon_state()
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 	else if (active)
@@ -289,6 +325,11 @@
 	var/datum/track
 	var/used = FALSE
 
+/obj/item/vinyldiscojukebox/proc/radial_check(mob/living/carbon/human/H)
+	if(!src || !Adjacent(H) || H.incapacitated())
+		return FALSE
+	return TRUE
+
 /obj/item/vinyldiscojukebox/attack_self(mob/user)
 	if(used) return // No hay rembolsos.
 	add_fingerprint(user) // TODOS SABEN QUIEN ERES
@@ -305,15 +346,20 @@
 	var/nombre = input(usr, "Escribe el nombre de la cancion, y no, no te dare vista previa", "Nombre de la Cancion") as text|null
 	if(!nombre || !Adjacent(user, src)) return
 
-	var/iconosaelegir = list("hispania","experimental","weird","admin","event","smuggy","trash","face?","game","calm","classical","smuggy","rock","actualrock") // Si quieren mas iconos solo pongan el nombre del icon state aqui
-	var/icono = input(usr, "Eligue el icono del vinilo", "Icono de la Cancion") as null|anything in iconosaelegir
-	if(!icono || !Adjacent(user, src)) return
+	var/list/skins = list()
+	for(var/I in list("hispania","experimental","weird","admin","event","smuggy","trash","face?","game","calm","classical","smuggy","rock","actualrock"))
+		var/image/image = image('modular_hispania/icons/obj/hispaniabox.dmi', icon_state = I)
+		skins[I] = image
 
-	used = TRUE
+	var/icono = show_radial_menu(user, src, skins, null, 40, CALLBACK(src, .proc/radial_check, user), TRUE)
+	if(!icono || !radial_check(user))
+		return
 
 	var/cancionreal = genero + " • " + nombre
 	if(!GLOB.sounds_cache.Find(rutacancion))
 		GLOB.sounds_cache += rutacancion
+
+	used = TRUE
 	track = new /datum/track(rutacancion, tiempo, 5, icono, cancionreal) // Aqui ocurre la magia
 	icon_state = icono
 	name = nombre + " vinyl"
@@ -323,14 +369,17 @@
 
 	message_admins("[key_name(usr)] ha creado una nueva cancion: \"[nombre]\"")
 
+// JUKEBOX ALT
+
 /obj/machinery/hispaniabox/boombox
 	name = "boombox"
 	desc = "For REAL Workout."
 	icon_state = "boombox"
 	anchored = TRUE
 	max_integrity = 50
-	integrity_failure = 40
+	integrity_failure = 35
 	songs = list(
 		"Play/Pause",
 		"WORK HARDER NOT SMARTER || Work Harder - LISA"    = new /datum/track('modular_hispania/sound/hispaniabox/harder.ogg',	1240,	5,	"harder", "Work Harder - LISA"),)
-	musicrange = 5
+	musicrange = 8
+	MusicChannel = CHANNEL_RADIOBOX
