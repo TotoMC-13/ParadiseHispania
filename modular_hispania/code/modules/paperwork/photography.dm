@@ -52,17 +52,16 @@
 		camera = new /obj/machinery/camera(src)
 		icon_state = icon_on
 		item_state = icon_on
-		update_icon()
 		camera.network = list("news")
 		camera.c_tag = user.name
 	else
 		on = FALSE
 		icon_state = icon_off
 		item_state = icon_off
-		update_icon()
 		camera.c_tag = null
 		QDEL_NULL(camera)
 	visible_message("<span class='notice'>The camera helmet has been turned [on ? "on" : "off"].</span>")
+	update_icon()
 
 /obj/item/clothing/head/camerahelmet/attack_self(mob/user)
 	camera_state(user)
