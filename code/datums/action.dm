@@ -317,6 +317,9 @@
 /datum/action/item_action/selectphrase
 	name = "Change Phrase"
 
+/datum/action/item_action/toggle_camera_helmet
+	name = "Toggle Camera"
+
 /datum/action/item_action/hoot
 	name = "Hoot"
 

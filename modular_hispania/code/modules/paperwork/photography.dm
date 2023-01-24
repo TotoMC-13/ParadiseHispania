@@ -13,26 +13,51 @@
 
 /obj/item/clothing/head/camerahelmet
 	name = "camera helmet"
-	desc = "A piece of headgear with a video camera attached to it, its able to send live feeds to the entertainment network."
-	icon_state = "hardhat0_yellow"
-	item_state = "hardhat0_yellow"
-	item_color = "yellow"
+	desc = "A piece of headgear with a video camera attached to it, its able to send live feed to the entertainment network."
+	icon = 'modular_hispania/icons/obj/clothing/head/helmet.dmi'
+	icon_state = "camerahelmet"
+	item_state = "camerahelmet"
 	var/on = FALSE
 	var/obj/machinery/camera/camera
-	var/icon_on = "hardhat0_yellow"
-	var/icon_off = "hardhat0_yellow"
+	var/icon_on = "camerahelmet_on"
+	var/icon_off = "camerahelmet"
 	var/canhear_range = 7
+
+	sprite_sheets = list(
+		"Human" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Kidan" ='modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Slime People" ='modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Machine" ='modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Skrell" ='modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Diona" ='modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Grey" = 'modular_hispania/icons/mob/clothing/species/grey/gloves.dmi',
+		"Nian" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Tajaran" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Vulpkanin" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Unathi" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Vox" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Drask" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi',
+		"Kidan" = 'modular_hispania/icons/mob/clothing/head/helmet.dmi'
+	)
+
+	actions_types = list(/datum/action/item_action/toggle_camera_helmet)
+
+/obj/item/clothing/head/camerahelmet/ui_action_click(mob/user, actiontype)
+    if(actiontype == /datum/action/item_action/toggle_camera_helmet)
+        camera_state()
 
 /obj/item/clothing/head/camerahelmet/proc/camera_state(mob/living/carbon/user)
 	if(!on)
 		on = TRUE
 		camera = new /obj/machinery/camera(src)
 		icon_state = icon_on
+		item_state = icon_on
 		camera.network = list("news")
 		camera.c_tag = user.name
 	else
 		on = FALSE
 		icon_state = icon_off
+		item_state = icon_off
 		camera.c_tag = null
 		QDEL_NULL(camera)
 	visible_message("<span class='notice'>The camera helmet has been turned [on ? "on" : "off"].</span>")
