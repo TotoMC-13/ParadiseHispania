@@ -44,7 +44,7 @@
 
 /obj/item/clothing/head/camerahelmet/ui_action_click(mob/user, actiontype)
     if(actiontype == /datum/action/item_action/toggle_camera_helmet)
-        camera_state()
+        camera_state(user)
 
 /obj/item/clothing/head/camerahelmet/proc/camera_state(mob/living/carbon/user)
 	if(!on)
@@ -52,12 +52,14 @@
 		camera = new /obj/machinery/camera(src)
 		icon_state = icon_on
 		item_state = icon_on
+		update_icon()
 		camera.network = list("news")
 		camera.c_tag = user.name
 	else
 		on = FALSE
 		icon_state = icon_off
 		item_state = icon_off
+		update_icon()
 		camera.c_tag = null
 		QDEL_NULL(camera)
 	visible_message("<span class='notice'>The camera helmet has been turned [on ? "on" : "off"].</span>")
