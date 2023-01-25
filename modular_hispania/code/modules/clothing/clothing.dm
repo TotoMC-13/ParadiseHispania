@@ -51,3 +51,7 @@
 /obj/item/clothing/glasses/
 	drop_sound = 'modular_hispania/sound/items/glasses.ogg'
 	pickup_sound = 'modular_hispania/sound/items/accesory_pickup.ogg'
+
+/obj/item/clothing/head/helmet/Initialize()
+	..()
+	icon = (hispania_icon ? 'modular_hispania/icons/obj/clothing/head/helmet.dmi' : icon)
